@@ -38,13 +38,13 @@ void print_python_list(PyObject *p)
 	PyListObject *list = (PyListObject *)p;
 
 	printf("[*] Python list info\n");
-	printf("[*] Size of the Python List = %ld\n", PyList_Size(p));
+	printf("[*] Size of the Python List = %ld\n", ((PyVarObject *)(p))->ob_size);
 	printf("[*] Allocated = %ld\n", list->allocated);
 
-	for (Py_ssize_t i = 0; i < PyList_Size(p); ++i)
+	for (Py_ssize_t i = 0; i < ((PyVarObject *)(p))->ob_size; ++i)
 	{
-		PyObject *element = PyList_GetItem(p, i);
-		printf("Element %ld: %s\n", i, Py_TYPE(element)->tp_name);
+		PyObject *element = list->ob_item[i];
+		printf("Element %ld: %s\n", i, element->ob_type->tp_name);
 
 		if (PyBytes_Check(element))
 			print_python_bytes(element);
