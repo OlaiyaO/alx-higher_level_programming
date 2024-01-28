@@ -1,0 +1,16 @@
+# Valid cases
+>>> text_indentation("Hello. How are you?")
+Hello.
+
+How are you?
+
+>>> text_indentation("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo?")
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+Quonam modo?
+
+# Invalid cases
+>>> text_indentation(42)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
