@@ -9,7 +9,6 @@ class Rectangle:
         width (int): The width of the rectangle.
         height (int): The height of the rectangle.
     """
-
     number_of_instances = 0
     print_symbol = '#'
 
