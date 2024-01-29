@@ -3,7 +3,12 @@
 
 
 class Rectangle:
-    """Class Rectangle that defines a rectangle."""
+    """Class Rectangle that defines a rectangle.
+
+    Attributes:
+        width (int): The width of the rectangle.
+        height (int): The height of the rectangle.
+    """
 
     def __init__(self, width=0, height=0):
         """Initialize a rectangle with specified width and height.
