@@ -79,7 +79,10 @@ class Rectangle:
         """Check if two rectangles are equal."""
         if not isinstance(other, Rectangle):
             return False
-        return self.__width == other.__width and self.__height == other.__height
+        return (
+                self.__width == other.__width and
+                self.__height == other.__height
+                )
 
     def __ne__(self, other):
         """Check if two rectangles are not equal."""
