@@ -3,10 +3,20 @@
 
 
 class Rectangle:
-    """Defines a rectangle with width and height."""
+    """Class Rectangle that defines a rectangle.
+
+    Attributes:
+        width (int): The width of the rectangle.
+        height (int): The height of the rectangle.
+    """
 
     def __init__(self, width=0, height=0):
-        """Initialize the rectangle with optional width and height."""
+        """Initialize a rectangle with specified width and height.
+
+        Args:
+            width (int): The width of the rectangle. Default is 0.
+            height (int): The height of the rectangle. Default is 0.
+        """
         self.width = width
         self.height = height
 
