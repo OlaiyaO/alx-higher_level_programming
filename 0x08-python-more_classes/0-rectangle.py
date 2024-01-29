@@ -3,6 +3,5 @@
 
 
 class Rectangle:
-    """A simple representation of a rectangle."""
-    
+    """A simple representation of a rectangle."""    
     pass
