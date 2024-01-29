@@ -79,7 +79,10 @@ class Rectangle:
         """Check if two rectangles are equal."""
         if not isinstance(other, Rectangle):
             return False
-        return self.__width == other.__width and self.__height == other.__height
+        return (
+                self.__width == other.__width and
+                self.__height == other.__height
+                )
 
     def __ne__(self, other):
         """Check if two rectangles are not equal."""
@@ -98,13 +101,13 @@ class Rectangle:
         return self.area() < other.area()
 
     def __ge__(self, other):
-        """Check if the current rectangle is greater than or equal to the other."""
+        """Checks which of two rectangles is greater."""
         if not isinstance(other, Rectangle):
             raise ValueError("Can't compare Rectangle with non-Rectangle type")
         return self.area() >= other.area()
 
     def __le__(self, other):
-        """Check if the current rectangle is less than or equal to the other."""
+        """Check if a rectangle is >= another."""
         if not isinstance(other, Rectangle):
             raise ValueError("Can't compare Rectangle with non-Rectangle type")
         return self.area() <= other.area()

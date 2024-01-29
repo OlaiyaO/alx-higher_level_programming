@@ -101,13 +101,13 @@ class Rectangle:
         return self.area() < other.area()
 
     def __ge__(self, other):
-        """Check if the current rectangle is greater than or equal to the other."""
+        """Check if a rectangle is greater than or equal to the another."""
         if not isinstance(other, Rectangle):
             raise ValueError("Can't compare Rectangle with non-Rectangle type")
         return self.area() >= other.area()
 
     def __le__(self, other):
-        """Check if the current rectangle is less than or equal to the other."""
+        """Check if a rectangle is less than or equal to the another."""
         if not isinstance(other, Rectangle):
             raise ValueError("Can't compare Rectangle with non-Rectangle type")
         return self.area() <= other.area()
