@@ -20,19 +20,19 @@ indicate the positions on the chessboard where queens must be placed.
 import sys
 
 
-def init_board(n):
-    """Initialize an `n`x`n` sized chessboard with 0's."""
+def initialize_board(n):
+    """Initialize a chessboard with 0's for all rows and columns."""
     board = [[' ' for _ in range(n)] for _ in range(n)]
     return board
 
 
 def board_copy(board):
-    """Return a deepcopy of a chessboard."""
+    """Return a chessboard's deepcopy."""
     return [row.copy() for row in board]
 
 
 def _solution(board):
-    """Return the list of lists representation of a solved chessboard."""
+    """Return the list of lists denoting a chessboard's solution."""
     solution = [
             [r, c]
             for r, row in enumerate(board)
@@ -96,7 +96,7 @@ def markedoff(board, row, col):
 
 
 def recursive_solution(board, row, queens, solutions):
-    """Recursively solve an N-queens puzzle.
+    """Recursively solution an N-queens puzzle.
 
     Args:
         board (list): The working chessboard.
@@ -123,7 +123,7 @@ def recursive_solution(board, row, queens, solutions):
                     solutions
                     )
 
-    return solutions
+            return solutions
 
 
 if __name__ == "__main__":
@@ -138,7 +138,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     board_size = int(sys.argv[1])
-    chessboard = init_board(board_size)
+    chessboard = initialize_board(board_size)
     solution_list = recursive_solution(chessboard, 0, 0, [])
 
     for solution in solution_list:
