@@ -12,6 +12,10 @@ N must be an integer greater than or equal to 4.
 Attributes:
     board (list): A chessboard represented by list of lists.
     solutions (list): Containing solutions mande of list of lists.
+
+Solutions are presented in the format [[r, c], [r, c], [r, c], [r, c]],
+where 'r' and 'c' denote the row and column, respectively. These pairs
+indicate the positions on the chessboard where queens must be placed.
 """
 import sys
 
@@ -38,10 +42,10 @@ def _solution(board):
     return solution
 
 
-def xout(board, row, col):
-    """X out spots on a chessboard.
+def markedoff(board, row, col):
+    """Mared off spots on a chessboard.
 
-    All X-ed out spots where non-attacking queens cann't be played anymore.
+    All Makred off spots where non-attacking queens cann't be played anymore.
 
     Args:
         board (list): The chessboard.
@@ -111,7 +115,7 @@ def recursive_solution(board, row, queens, solutions):
         if board[row][c] == " ":
             tmp_board = board_copy(board)
             tmp_board[row][c] = "Q"
-            xout(tmp_board, row, c)
+            markedoff(tmp_board, row, c)
             solutions = recursive_solution(
                     tmp_board,
                     row + 1,
