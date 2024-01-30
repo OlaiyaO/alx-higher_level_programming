@@ -129,7 +129,7 @@ class Rectangle:
             rect_2 (Rectangle): The second rectangle.
 
         Raises:
-            TypeError: If either rect_1 or rect_2 is not an instance of Rectangle.
+            TypeError: If either rect_1 or rect_2 is not a rectangle instance.
         """
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")

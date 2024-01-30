@@ -66,8 +66,8 @@ class Rectangle:
             for _ in range(self.__height)
             ])
 
-    def __repr__(self):
-        """Return a string representation that can recreate the object."""
+        def __repr__(self):
+            """Return a string representation that can recreate the object."""
         return 'Rectangle({}, {})'.format(self.__width, self.__height)
 
     def __del__(self):
@@ -84,37 +84,53 @@ class Rectangle:
                 self.__height == other.__height
                 )
 
-    def __ne__(self, other):
-        """Check if two rectangles are not equal."""
+        def __ne__(self, other):
+            """Check if two rectangles are not equal."""
         return not self.__eq__(other)
 
     def __gt__(self, other):
         """Check if the current rectangle is greater than the other."""
         if not isinstance(other, Rectangle):
-            raise ValueError("Can't compare Rectangle with non-Rectangle type")
-        return self.area() > other.area()
+            raise ValueError(
+                    "Can't compare Rectangle with non-Rectangle type"
+                    )
+            return self.area() > other.area()
 
     def __lt__(self, other):
         """Check if the current rectangle is less than the other."""
         if not isinstance(other, Rectangle):
-            raise ValueError("Can't compare Rectangle with non-Rectangle type")
-        return self.area() < other.area()
+            raise ValueError(
+                    "Can't compare Rectangle with non-Rectangle type"
+                    )
+            return self.area() < other.area()
 
     def __ge__(self, other):
         """Checks which of two rectangles is greater."""
         if not isinstance(other, Rectangle):
-            raise ValueError("Can't compare Rectangle with non-Rectangle type")
-        return self.area() >= other.area()
+            raise ValueError(
+                    "Can't compare Rectangle with non-Rectangle type"
+                    )
+            return self.area() >= other.area()
 
     def __le__(self, other):
         """Check if a rectangle is >= another."""
         if not isinstance(other, Rectangle):
-            raise ValueError("Can't compare Rectangle with non-Rectangle type")
-        return self.area() <= other.area()
+            raise ValueError(
+                    "Can't compare Rectangle with non-Rectangle type"
+                    )
+            return self.area() <= other.area()
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
-        """Return the rectangle with the greater area, or rect_1 if equal."""
+        """Return the rectangle with the greater area, or rect_1 if equal.
+
+        Args:
+            rect_1 (Rectangle): The first rectangle.
+            rect_2 (Rectangle): The second rectangle.
+
+        Raises:
+            TypeError: If either rect_1 or rect_2 is not a rectangle instance.
+        """
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
