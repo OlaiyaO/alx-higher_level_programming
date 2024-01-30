@@ -84,33 +84,41 @@ class Rectangle:
                 self.__height == other.__height
                 )
 
-    def __ne__(self, other):
-        """Check if two rectangles are not equal."""
+        def __ne__(self, other):
+            """Check if two rectangles are not equal."""
         return not self.__eq__(other)
 
     def __gt__(self, other):
         """Check if the current rectangle is greater than the other."""
         if not isinstance(other, Rectangle):
-            raise ValueError("Can't compare Rectangle with non-Rectangle type")
-        return self.area() > other.area()
+            raise ValueError(
+                    "Can't compare Rectangle with non-Rectangle type"
+                    )
+            return self.area() > other.area()
 
     def __lt__(self, other):
         """Check if the current rectangle is less than the other."""
         if not isinstance(other, Rectangle):
-            raise ValueError("Can't compare Rectangle with non-Rectangle type")
-        return self.area() < other.area()
+            raise ValueError(
+                    "Can't compare Rectangle with non-Rectangle type"
+                    )
+            return self.area() < other.area()
 
     def __ge__(self, other):
         """Check if a rectangle is greater than or equal to the another."""
         if not isinstance(other, Rectangle):
-            raise ValueError("Can't compare Rectangle with non-Rectangle type")
-        return self.area() >= other.area()
+            raise ValueError(
+                    "Can't compare Rectangle with non-Rectangle type"
+                    )
+            return self.area() >= other.area()
 
     def __le__(self, other):
         """Check if a rectangle is less than or equal to the another."""
         if not isinstance(other, Rectangle):
-            raise ValueError("Can't compare Rectangle with non-Rectangle type")
-        return self.area() <= other.area()
+            raise ValueError(
+                    "Can't compare Rectangle with non-Rectangle type"
+                    )
+            return self.area() <= other.area()
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
