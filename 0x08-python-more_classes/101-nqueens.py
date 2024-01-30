@@ -123,7 +123,7 @@ def recursive_solution(board, row, queens, solutions):
                     solutions
                     )
 
-            return solutions
+    return solutions
 
 
 if __name__ == "__main__":
