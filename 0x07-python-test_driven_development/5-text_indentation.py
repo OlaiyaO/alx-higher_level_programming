@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Formats text with line breaks; raises TypeError for non-strings."""
+
 
 def text_indentation(text):
     """
