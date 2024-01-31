@@ -1,15 +1,67 @@
-# Valid cases
->>> say_my_name("John", "Smith")
-My name is John Smith
+===========================
+How to Use 3-say_my_name.py
+===========================
 
->>> say_my_name("Walter", "White")
-My name is Walter White
+This module introduces a function ``say_my_name(first, last="")``.
 
->>> say_my_name("Bob")
-My name is Bob
+Usage
+=====
 
-# Invalid cases
->>> say_my_name(12, "White")
-Traceback (most recent call last):
-    ...
-TypeError: first_name must be a string
+``say_my_name(...)`` displays "Hello, I'm <first> <last>".
+
+::
+
+    >>> say_my_name_result = __import__('3-say_my_name').say_my_name
+    >>> say_my_name_result("Sophia", "Johnson")
+    Hello, I'm Sophia Johnson
+
+::
+
+    >>> say_my_name_result("Oliver", "Davis")
+    Hello, I'm Oliver Davis
+
+The parameter ```last``` is optional. If no last name is provided,
+an empty string is displayed instead.
+
+::
+
+    >>> say_my_name_result("Sophia")
+    Hello, I'm Sophia 
+
+Invalid Names
+=============
+
+The parameters ``first`` and ``last`` must be strings. Otherwise,
+a TypeError is triggered.
+
+::
+
+    >>> say_my_name_result(123, "Jones")
+    Traceback (most recent call last):
+    TypeError: first must be a string
+
+::
+
+    >>> say_my_name_result("Alex", ["Smith", "Jones"])
+    Traceback (most recent call last):
+    TypeError: last must be a string
+
+::
+
+    >>> say_my_name_result({"John": "Doe"}, None)
+    Traceback (most recent call last):
+    TypeError: first must be a string
+
+::
+
+    >>> say_my_name_result(42)
+    Traceback (most recent call last):
+    TypeError: first must be a string
+
+At least one name must be provided.
+
+::
+
+    >>> say_my_name_result()
+    Traceback (most recent call last):
+    TypeError: say_my_name_result() missing 1 required positional argument: 'first'
