@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""8-rectangle.py: Defines a class Rectangle that inherits from BaseGeometry"""
+"""9-rectangle.py: Extends Rectangle with an implemented area."""
 
 
 class BaseGeometry:
@@ -14,7 +14,7 @@ class BaseGeometry:
         if not isinstance(value, int):
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
+            raise ValueError("{} must be greater than 0".format(name))i
 
 
 class Rectangle(BaseGeometry):
@@ -26,3 +26,11 @@ class Rectangle(BaseGeometry):
         self.integer_validator("height", height)
         self.__width = width
         self.__height = height
+
+    def area(self):
+        """Calculates and returns the area of the rectangle."""
+        return self.__width * self.__height
+
+    def __str__(self):
+        """Returns a string representation of the rectangle."""
+        return "[Rectangle] {}/{}".format(self.__width, self.__height)
