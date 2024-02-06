@@ -1,48 +1,145 @@
-Tests on 1-my_list.py
-=====================
+# 1-my_list.txt
 
-Case 0: Import
+=======================
+How to Use 1-my_list.py
+=======================
+
+This module introduces a class `MyList` that inherits from `list`.
+
+Instantiation
+=============
+
+`MyList` can be instantiated without arguments, creating an empty list:
+
 >>> MyList = __import__('1-my_list').MyList
->>>
------------------------------------------
+>>> my_list = MyList()
+>>> type(my_list)
+<class '1-my_list.MyList'>
+>>> print(my_list)
+[]
 
-Case 1: Empty List
+Or with a single argument, an iterable object:
 
->>> b = []
->>> my_list = MyList(b)
+>>> my_list = MyList([10, 20, 30])
+>>> print(my_list)
+[10, 20, 30]
+
+Attempting multiple instantiation arguments raises a TypeError:
+
+>>> my_list = MyList([10, 20], [30, 40])
+Traceback (most recent call last):
+TypeError: list() takes at most 1 argument (2 given)
+
+Usage
+=====
+
+`MyList` inherits `list` methods. For example, add elements with `append()`:
+
+>>> my_list = MyList()
+>>> my_list.append(100)
+>>> my_list.append(200)
+>>> my_list.append(300)
+>>> print(my_list)
+[100, 200, 300]
+
+Replaced with indexing:
+
+>>> my_list[0] = 500
+>>> print(my_list)
+[500, 200, 300]
+
+Remove with the `remove()` method:
+
+>>> my_list.remove(500)
+>>> print(my_list)
+[200, 300]
+
+`print_sorted` Method
+=======================
+
+`MyList` implements a method - a public instance method `print_sorted(self)`:
+
+>>> my_list = MyList()
+>>> print(my_list.print_sorted)
+<bound method MyList.print_sorted of []>
+
+The method takes no arguments; providing one raises a TypeError:
+
+>>> my_list.print_sorted(1)
+Traceback (most recent call last):
+TypeError: print_sorted() takes 1 positional argument but 2 were given
+
+The method prints the list in ascending sorted order:
+
+>>> my_list.append(100)
+>>> my_list.append(400)
+>>> my_list.append(200)
+>>> my_list.append(300)
+>>> my_list.append(500)
+>>> print(my_list)
+[100, 400, 200, 300, 500]
+
+>>> my_list.print_sorted()
+[100, 200, 300, 400, 500]
+
+The original list order remains unaltered:
+
+>>> print(my_list)
+[100, 400, 200, 300, 500]
+
+Lists of strings are sorted lexicographically:
+
+>>> my_list = MyList()
+>>> my_list.append("Zara")
+>>> my_list.append("John")
+>>> my_list.append("Alice")
+>>> my_list.append("Bob")
+>>> my_list.append("Charlie")
+>>> print(my_list)
+['Zara', 'John', 'Alice', 'Bob', 'Charlie']
+
+>>> my_list.print_sorted()
+['Alice', 'Bob', 'Charlie', 'John', 'Zara']
+
+The original list is unaltered:
+
+>>> print(my_list)
+['Zara', 'John', 'Alice', 'Bob', 'Charlie']
+
+Empty lists have nothing to sort:
+
+>>> my_list = MyList()
 >>> my_list.print_sorted()
 []
->>>
 
------------------------------------------
+Calling `print_sorted()` on a list of different types raises a TypeError:
 
-Case 2: Same Number
-
->>> my_list2 = MyList()
->>> my_list2.append(3)
->>> my_list2.append(3)
->>> my_list2.append(3)
->>> my_list2.append(3)
->>> my_list2.print_sorted()
-[3, 3, 3, 3]
->>>
-
------------------------------------------
-
-Case 3: Not Defined Object
+>>> my_list = MyList([1, "Alice", "Bob", 5])
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+TypeError: unorderable types: str() < int()
 
 >>> MyList = __import__('1-my_list').MyList
+
+Test with a list containing the same number multiple times:
+
+>>> my_list = MyList()
+>>> my_list.append(3)
+>>> my_list.append(3)
+>>> my_list.append(3)
+>>> my_list.append(3)
+>>> my_list.print_sorted()
+[3, 3, 3, 3]
+
+Test attempting to use an undefined object:
+
 >>> my_list2.print_sorted()
 Traceback (most recent call last):
-	File "<stdin>", line 1, in <module>
+    File "<stdin>", line 1, in <module>
 NameError: name 'my_list2' is not defined
->>>
 
------------------------------------------
+Test with a list containing negative numbers:
 
-Case 4: Negative Numbers
-
->>> MyList = __import__('1-my_list').MyList
 >>> my_list = MyList()
 >>> my_list.append(7)
 >>> my_list.append(-2)
@@ -51,42 +148,31 @@ Case 4: Negative Numbers
 >>> my_list.append(-1)
 >>> my_list.print_sorted()
 [-9, -2, -1, 0, 7]
->>>
 
------------------------------------------
+Test attempting to use the print_sorted method on a regular list:
 
-Case 5: Parent Object
 >>> my_list = [5, 2, 8]
 >>> my_list.print_sorted()
 Traceback (most recent call last):
-	File "<stdin>", line 1, in <module>
+    File "<stdin>", line 1, in <module>
 AttributeError: 'list' object has no attribute 'print_sorted'
->>>
 
------------------------------------------
-
-Case 6: Unique Numbers
+Test with a list containing unique numbers:
 
 >>> my_list = MyList()
 >>> my_list.append(6)
 >>> my_list.print_sorted()
 >>> print(my_list)
 [6]
->>>
 
------------------------------------------
-
-Case 7: Passed a List
+Test with a list passed as an argument during instantiation:
 
 >>> a = [1, 9, 4]
 >>> my_list = MyList(a)
 >>> my_list.print_sorted()
 [1, 4, 9]
->>>
 
------------------------------------------
-
-Case 8: Common Case
+Test with a common case of adding, printing, and sorting a list:
 
 >>> my_list = MyList()
 >>> my_list.append(9)
@@ -100,4 +186,3 @@ Case 8: Common Case
 [1, 2, 4, 5, 9]
 >>> print(my_list)
 [9, 4, 2, 1, 5]
->>>
