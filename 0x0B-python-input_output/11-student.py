@@ -1,20 +1,19 @@
 #!/usr/bin/python3
 """
-Defines a student class with methods to save to and reload from a JSON file.
+Script to demonstrate serialization and deserialization of a Student object.
 """
 
-
-import json
-
+import os
+import sys
 
 class Student:
     """
-    Represents a student.
+    Class defining a student.
     """
 
     def __init__(self, first_name, last_name, age):
         """
-        Initializes a student instance.
+        Initializes a Student instance with first name, last name, and age.
 
         Args:
             first_name (str): The first name of the student.
@@ -25,24 +24,32 @@ class Student:
         self.last_name = last_name
         self.age = age
 
-    def to_json(self):
+    def to_json(self, attrs=None):
         """
-        Retrieves a dictionary representation of a student instance.
+        Retrieves a dictionary representation of a Student instance.
+
+        Args:
+            attrs (list): Strings specifying the attributes added to the dictionary.
 
         Returns:
-            dict: A dictionary representation of the student instance.
+            dict: A dictionary representation of the Student instance.
         """
-        return self.__dict__
+        if attrs is None:
+            return self.__dict__
+        else:
+            result = {}
+            for attr in attrs:
+                if hasattr(self, attr):
+                    result[attr] = getattr(self, attr)
+        return result
+
 
     def reload_from_json(self, json):
         """
-        Replaces attributes of Student with the values from a dictionary.
+        Replaces all attributes of the Student instance using a dictionary.
 
         Args:
-            json (dict): A dictionary containing attribute values to reload.
-
-        Returns:
-            None
+            json (dict): A dictionary containing the attribute values.
         """
         for key, value in json.items():
             setattr(self, key, value)
