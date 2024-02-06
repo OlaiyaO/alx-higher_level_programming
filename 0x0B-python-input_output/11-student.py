@@ -30,17 +30,21 @@ class Student:
         Returns:
             dict: dictionary representation of the Student instance
         """
+
         if attrs is None:
             return self.__dict__
         else:
-            return {key: value for key, value in self.__dict__.items()
-                    if key in attrs}
+            return {key: getattr(self, key) for key in attrs if hasattr(self, key)}
 
-            def reload_from_json(self, json):
-                """
+    def reload_from_json(self, json):
+
+        """
         Replaces all attributes of the Student instance
         Args:
             json (dict): dictionary representation of a Student instance
         """
         for key, value in json.items():
-            setattr(self, key, value)
+            if hasattr(self, key):
+                setattr(self, key, value)
+            else:
+                print(f"Ignoring unknown attribute: {key}")
