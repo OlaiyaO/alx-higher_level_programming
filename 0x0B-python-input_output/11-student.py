@@ -1,25 +1,21 @@
 #!/usr/bin/python3
 """
-Script to demonstrate serialization and deserialization of a Student object.
+Module for Student class
 """
-
-import os
-import sys
 
 
 class Student:
     """
-    Class defining a student.
+    Defines a Student
     """
 
     def __init__(self, first_name, last_name, age):
         """
-        Initializes a Student instance with first name, last name, and age.
-
+        Initializes a Student instance
         Args:
-            first_name (str): The first name of the student.
-            last_name (str): The last name of the student.
-            age (int): The age of the student.
+            first_name (str): the first name of the student
+            last_name (str): the last name of the student
+            age (int): the age of the student
         """
         self.first_name = first_name
         self.last_name = last_name
@@ -27,29 +23,24 @@ class Student:
 
     def to_json(self, attrs=None):
         """
-        Retrieves a dictionary representation of a Student instance.
-
+        Retrieves a dictionary representation of a Student instance
         Args:
-            attrs (list): Specifying the attributes added to the dictionary.
-
+            attrs (list): list of strings, only attributes names
+                          contained in this list must be retrieved
         Returns:
-            dict: A dictionary representation of the Student instance.
+            dict: dictionary representation of the Student instance
         """
         if attrs is None:
             return self.__dict__
         else:
-            result = {}
-            for attr in attrs:
-                if hasattr(self, attr):
-                    result[attr] = getattr(self, attr)
-        return result
+            return {key: value for key, value in self.__dict__.items()
+                    if key in attrs}
 
-    def reload_from_json(self, json):
-        """
-        Replaces all attributes of the Student instance using a dictionary.
-
+            def reload_from_json(self, json):
+                """
+        Replaces all attributes of the Student instance
         Args:
-            json (dict): A dictionary containing the attribute values.
+            json (dict): dictionary representation of a Student instance
         """
         for key, value in json.items():
             setattr(self, key, value)
