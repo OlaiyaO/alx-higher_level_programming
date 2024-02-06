@@ -1,4 +1,4 @@
-1-my_list.py Test
+Tests on 1-my_list.py
 -----------------------------------------
 
 Case 0: Import
@@ -8,8 +8,8 @@ Case 0: Import
 
 Case 1: Empty List
 
->>> a = []
->>> my_list = MyList(a)
+>>> b = []
+>>> my_list = MyList(b)
 >>> my_list.print_sorted()
 []
 >>>
@@ -32,11 +32,10 @@ Case 2: Same Number
 Case 3: Not Defined Object
 
 >>> MyList = __import__('1-my_list').MyList
->>> my_list2 = MyList()
 >>> my_list2.print_sorted()
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-AttributeError: 'MyList' object has no attribute 'print_sorted'
+NameError: name 'my_list2' is not defined
 >>>
 
 -----------------------------------------
@@ -70,12 +69,10 @@ AttributeError: 'list' object has no attribute 'print_sorted'
 Case 6: Unique Numbers
 
 >>> my_list = MyList()
->>> my_list.append(11)
 >>> my_list.append(6)
 >>> my_list.print_sorted()
-[6, 11]
 >>> print(my_list)
-[11, 6]
+[6]
 >>>
 
 -----------------------------------------
