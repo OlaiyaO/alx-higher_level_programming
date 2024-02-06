@@ -34,7 +34,11 @@ class Student:
         if attrs is None:
             return self.__dict__
         else:
-            return {key: getattr(self, key) for key in attrs if hasattr(self, key)}
+            json_dict = {}
+            for key in attrs:
+                if hasattr(self, key):
+                    json_dict[key] = getattr(self, key)
+            return json_dict
 
     def reload_from_json(self, json):
 
