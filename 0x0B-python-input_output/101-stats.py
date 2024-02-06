@@ -20,6 +20,7 @@ def print_stats(total_size, status_codes):
         if count > 0:
             print("{}: {}".format(status_code, count))
 
+
 def main():
     """
     Read input from stdin line by line, compute metrics, and print statistics.
@@ -62,6 +63,7 @@ def main():
         pass
 
     print_stats(total_size, status_codes)
+
 
 if __name__ == "__main__":
     main()
