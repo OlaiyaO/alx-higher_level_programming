@@ -7,43 +7,27 @@ Reads stdin line by line and computes metrics.
 import sys
 
 
-def print_statistics(total_size, status_codes):
+def print_stats(total_size, status_codes):
     """
-    Prints the computed statistics.
+    Print statistics of lines for each status code.
 
     Args:
-        total_size (int): Total file size.
-        status_codes (dict): Dictionary of the count of each status code.
-
-    Returns:
-        None
+        total_size (int): Total size of the files processed.
+        status_codes (dict): Dictionary containing counts for each status.
     """
-    print("File size:", total_size)
-    sorted_codes = sorted(status_codes.items())
-    for code, count in sorted_codes:
+    print("File size: {}".format(total_size))
+    for status_code, count in sorted(status_codes.items()):
         if count > 0:
-            print("{}: {}".format(code, count))
-
-
-def parse_line(line):
-    """
-    Parses a log line and extracts the file size and status code.
-
-    Args:
-        line (str): The log line to parse.
-
-    Returns:
-        tuple: A tuple of the file size (int) and the status code (int).
-    """
-    elements = line.split()
-    return int(elements[-1]), elements[-2]
-
+            print("{}: {}".format(status_code, count))
 
 def main():
     """
-    Main function to read stdin line by line and compute metrics.
+    Read input from stdin line by line, compute metrics, and print statistics.
+
+    Prints statistics 10 lines or after a keyboard interruption (CTRL + C).
     """
     total_size = 0
+
     status_codes = {
             '200': 0,
             '301': 0,
@@ -53,25 +37,31 @@ def main():
             '404': 0,
             '405': 0,
             '500': 0
-    }
-    
-    line_count = 0
+            }
+
+    lines_processed = 0
 
     try:
         for line in sys.stdin:
-            line_count += 1
-            size, status = parse_line(line)
-            total_size += size
-            if status in status_codes:
-                status_codes[status] += 1
+            try:
+                data = line.split()
+                size = int(data[-1])
+                status_code = data[-2]
 
-            if line_count % 10 == 0:
-                print_statistics(total_size, status_codes)
+                if status_code in status_codes:
+                    status_codes[status_code] += 1
+                total_size += size
+                lines_processed += 1
+
+                if lines_processed % 10 == 0:
+                    print_stats(total_size, status_codes)
+            except Exception as e:
+                pass
 
     except KeyboardInterrupt:
-        print_statistics(total_size, status_codes)
-        raise
+        pass
 
+    print_stats(total_size, status_codes)
 
 if __name__ == "__main__":
     main()
