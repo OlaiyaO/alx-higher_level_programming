@@ -6,6 +6,7 @@ Script to demonstrate serialization and deserialization of a Student object.
 import os
 import sys
 
+
 class Student:
     """
     Class defining a student.
@@ -29,7 +30,7 @@ class Student:
         Retrieves a dictionary representation of a Student instance.
 
         Args:
-            attrs (list): Strings specifying the attributes added to the dictionary.
+            attrs (list): Specifying the attributes added to the dictionary.
 
         Returns:
             dict: A dictionary representation of the Student instance.
@@ -42,7 +43,6 @@ class Student:
                 if hasattr(self, attr):
                     result[attr] = getattr(self, attr)
         return result
-
 
     def reload_from_json(self, json):
         """
