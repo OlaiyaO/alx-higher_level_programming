@@ -2,6 +2,7 @@
 """Module for Rectangle class"""
 from models.base import Base
 
+
 class Rectangle(Base):
     """Rectangle class"""
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -23,9 +24,13 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         """Updates the instance attributes"""
-        attr_names = ["id", "width", "height", "x", "y"]
-        for i, value in enumerate(args):
-            setattr(self, attr_names[i], value)
+        if args:
+            attr_names = ["id", "width", "height", "x", "y"]
+            for i, value in enumerate(args):
+                setattr(self, attr_names[i], value)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
     @property
     def width(self):
