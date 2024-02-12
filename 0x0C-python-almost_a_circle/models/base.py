@@ -23,6 +23,19 @@ class Base:
         return json.dumps(list_dictionaries)
 
     @classmethod
+    def load_from_file(cls):
+        """Returns a list of instances"""
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, mode='r', encoding='utf-8') as f:
+                return [
+                        cls.create(**dic)
+                        for dic in cls.from_json_string(f.read())
+                        ]
+        except FileNotFoundError:
+            return []
+
+    @classmethod
     def save_to_file(cls, list_objs):
         """Writes the JSON string representation of list_objs to a file"""
         filename = cls.__name__ + ".json"
