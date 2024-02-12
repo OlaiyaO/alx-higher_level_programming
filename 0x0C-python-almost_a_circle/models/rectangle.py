@@ -12,6 +12,21 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
+    def __str__(self):
+        """String representation of the rectangle"""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+                self.id,
+                self.x,
+                self.y,
+                self.width,
+                self.height)
+
+    def update(self, *args, **kwargs):
+        """Updates the instance attributes"""
+        attr_names = ["id", "width", "height", "x", "y"]
+        for i, value in enumerate(args):
+            setattr(self, attr_names[i], value)
+
     @property
     def width(self):
         """Getter for width"""
