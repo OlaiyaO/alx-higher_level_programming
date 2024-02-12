@@ -60,6 +60,10 @@ class Rectangle(Base):
         self.validate_negative_value("y", value)
         self.__y = value
 
+    def area(self):
+        """Returns the area of the rectangle"""
+        return self.width * self.height
+
     def validate_int_value(self, attr, value):
         """Validates if value is an integer"""
         if type(value) is not int:
