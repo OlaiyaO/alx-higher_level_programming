@@ -1,0 +1,7 @@
+# Introduce an additional variable for source files
+
+CC = gcc
+SRC = main.c school.c
+
+all: $(SRC)
+	$(CC) $(SRC) -o school
