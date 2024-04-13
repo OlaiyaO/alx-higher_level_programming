@@ -21,7 +21,7 @@ def main():
         )
 
     except MySQLdb.Error as e:
-        print("MySQLdb Error:", e)
+        print("MySQLdb Error: {}".format(e))
         sys.exit(1)
 
     cursor = db.cursor()
@@ -34,3 +34,4 @@ def main():
     db.close()
 
 if __name__ == "__main__":
+    main()
