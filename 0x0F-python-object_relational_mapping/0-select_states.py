@@ -17,7 +17,7 @@ def main():
             port=3306,
             user=username,
             passwd=password,
-            db=db_name
+            db=db_name,
             charset = "utf8"
         )
 
