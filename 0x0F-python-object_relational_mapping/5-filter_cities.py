@@ -16,34 +16,32 @@ def main():
     state_name = sys.argv[4]
 
     try:
-        db = MySQLdb.connect(
+        with MySQLdb.connect(
             host="localhost",
             port=3306,
             user=username,
             passwd=password,
             db=db_name
-        )
+        ) as db:
+
+            with db.cursor() as cursor:
+                query = """
+                    SELECT cities.id, cities.name
+                    FROM cities
+                    JOIN states ON cities.state_id = states.id
+                    WHERE states.name = %s
+                    ORDER BY cities.id ASC
+                """
+                cursor.execute(query, (state_name,))
+
+                cities = cursor.fetchall()
+
+                if cities:
+                    print(", ".join([city[1] for city in cities]))
+
     except MySQLdb.Error as e:
         print("MySQLdb Error:", e)
         sys.exit(1)
-
-    cursor = db.cursor()
-    query = """
-        SELECT cities.id, cities.name
-        FROM cities
-        JOIN states ON cities.state_id = states.id
-        WHERE states.name = %s
-        ORDER BY cities.id ASC
-    """
-    cursor.execute(query, (state_name,))
-
-    cities = cursor.fetchall()
-
-    if cities:
-        print(", ".join([city[1] for city in cities]))
-
-    cursor.close()
-    db.close()
 
 
 if __name__ == "__main__":
