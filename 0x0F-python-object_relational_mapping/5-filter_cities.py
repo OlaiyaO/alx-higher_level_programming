@@ -29,7 +29,7 @@ def main():
 
     cursor = db.cursor()
     query = """
-        SELECT GROUP_CONCAT(cities.name SEPARATOR ', ')
+        SELECT cities.id, cities.name
         FROM cities
         JOIN states ON cities.state_id = states.id
         WHERE states.name = %s
@@ -37,11 +37,10 @@ def main():
     """
     cursor.execute(query, (state_name,))
 
-    cities = cursor.fetchone()[0]
+    cities = cursor.fetchall()
+
     if cities:
-        print(cities)
-    else:
-        pass
+        print(", ".join([city[1] for city in cities]))
 
     cursor.close()
     db.close()
