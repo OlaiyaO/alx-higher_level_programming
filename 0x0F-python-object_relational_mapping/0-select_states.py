@@ -2,15 +2,12 @@
 """
 Script that lists all states from the database hbtn_0e_0_usa
 """
-
-
 import MySQLdb
 import sys
 
-def main():
-    """
-    Main function to connect to MySQL database and retrieve states
-    """
+
+if __name__ == "__main__"
+
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
