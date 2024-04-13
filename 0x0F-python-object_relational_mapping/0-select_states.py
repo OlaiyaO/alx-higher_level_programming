@@ -18,7 +18,7 @@ def main():
             user=username,
             passwd=password,
             db=db_name,
-            charset = "utf8"
+            charset="utf8"
         )
 
     except MySQLdb.Error as e:
@@ -33,6 +33,7 @@ def main():
 
     cursor.close()
     db.close()
+
 
 if __name__ == "__main__":
     main()
