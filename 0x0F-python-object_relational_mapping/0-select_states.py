@@ -18,6 +18,7 @@ def main():
             user=username,
             passwd=password,
             db=db_name
+            charset = "utf8"
         )
 
     except MySQLdb.Error as e:
