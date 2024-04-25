@@ -27,8 +27,10 @@ def find_peak(list_of_integers):
     hi = length
     while lo < hi:
         mid = (lo + hi) // 2
-        if (mid == 0 or list_of_integers[mid] >= list_of_integers[mid - 1]) and \
-           (mid == length - 1 or list_of_integers[mid] >= list_of_integers[mid + 1]):
+        if (mid == 0 or
+                list_of_integers[mid] >= list_of_integers[mid - 1]) \
+                and (mid == length - 1 or
+                     list_of_integers[mid] >= list_of_integers[mid + 1]):
             return list_of_integers[mid]
         elif mid > 0 and list_of_integers[mid] < list_of_integers[mid + 1]:
             lo = mid + 1
