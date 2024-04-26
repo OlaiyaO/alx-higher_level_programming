@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Lists 10 commits (from the most recent to oldest) of a repository by a user."""
+"""
+Lists 10 commits (from the most recent to oldest) of a repository by a user.
+"""
 import requests
 import sys
 
@@ -20,4 +22,6 @@ if __name__ == "__main__":
             author_name = commit['commit']['author']['name']
             print(f"{sha}: {author_name}")
     else:
-        print(f"Error: Unable to fetch commits. Status code: {response.status_code}")
+        print(
+                f"Error: Unable to fetch commits. \
+                        Status code: {response.status_code}")
